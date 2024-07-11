@@ -12,11 +12,15 @@ export function SignUp() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (fullName && email && password) {
-      navigate('/main');
-
+    if (!fullName || !email || password.length < 3) {
+      if (!fullName || !email) {
+        alert('Please fill in all fields.');
+      }
+      if (password.length < 3) {
+        alert('Please enter a password of more than 3 characters.');
+      }
     } else {
-      alert('Please fill in all fields.');
+      navigate('/main');
     }
   };
 

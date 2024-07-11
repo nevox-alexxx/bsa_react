@@ -22,8 +22,8 @@ export function BookingCards() {
   return (
     <ul className="bookings__list">
       {sortedBookings.map((booking) => (
-        <li 
-          data-test-id="booking" 
+        <li
+          data-test-id="booking"
           className="booking"
           key={booking.id}
         >
@@ -31,12 +31,14 @@ export function BookingCards() {
           <span data-test-id="booking-guests" className="booking__guests">
             {booking.guests} guests
           </span>
+          
           <span data-test-id="booking-date" className="booking__date">
-            {new Date(booking.date).toLocaleDateString()}
+            {new Date(booking.date).toLocaleDateString('en-CA')}
           </span>
           <span data-test-id="booking-total" className="booking__total">
             ${booking.totalPrice}
           </span>
+
           <button
             data-test-id="booking-cancel"
             className="booking__cancel"
