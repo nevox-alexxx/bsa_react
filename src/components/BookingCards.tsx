@@ -1,10 +1,27 @@
 import '../assets/css/style.css';
 import bookings from '../assets/data/bookings.json';
+import { useNavigate } from 'react-router-dom';
 
 export function BookingCards() {
+  const navigate = useNavigate();
+
+  const cancelBooking = (id: string) => {
+    const index = bookings.findIndex(booking => booking.id === id);
+    if (index !== -1) {
+      bookings.splice(index, 1);
+      navigate('/bookings');
+    }
+  };
+
+  const sortedBookings = bookings.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateA.getTime() - dateB.getTime();
+  });
+
   return (
     <ul className="bookings__list">
-      {bookings.map((booking) => (
+      {sortedBookings.map((booking) => (
         <li 
           data-test-id="booking" 
           className="booking"
@@ -24,6 +41,7 @@ export function BookingCards() {
             data-test-id="booking-cancel"
             className="booking__cancel"
             title="Cancel booking"
+            onClick={() => cancelBooking(booking.id)}
           >
             <span className="visually-hidden">Cancel booking</span>
             ×

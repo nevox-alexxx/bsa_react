@@ -1,7 +1,7 @@
 import { MainHeader } from "../components/MainHeader"
 import { BookingCards } from "../components/BookingCards"
 
-export function Bookings() {
+export const Bookings:React.FC = () => {
   return (
     <>
       <MainHeader />
