@@ -660,3 +660,10 @@ select {
     transform: rotate(360deg);
   }
 }
+
+/* Error page */
+
+.error-page {
+  text-align: center;
+  padding-bottom: 50px;
+}

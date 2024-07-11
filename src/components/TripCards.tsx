@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom';
-import trips from '../assets/data/trips.json';
 import '../assets/css/style.css';
 
-export function TripCards() {
+interface Trip {
+  id: string;
+  title: string;
+  duration: number;
+  level: string;
+  price: number;
+  image: string;
+}
+
+interface TripCardsProps {
+  trips: Trip[];
+}
+
+export function TripCards({ trips }: TripCardsProps) {
   return (
     <ul className="trip-list">
       {trips.map((trip) => (
